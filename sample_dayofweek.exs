@@ -60,4 +60,16 @@ defmodule Sample.DayOfWeek do
       _ -> "Invalid day"
     end
   end
+
+  def describe_date(date) do
+    case date do
+      {1,_,_} -> "brand new month"
+      {25,12,_} -> "Merry Christmas"
+      {25, month, _} -> "Only #{12 - month} more months till Christmas"
+      {31, 10, 1517} -> "The reformation is starting"
+      {31, 10, _ } -> "Happy Halloween"
+      {_, _, _} -> "Just and average day"
+    end
+  end
+
 end
