@@ -19,12 +19,12 @@ defmodule Sample.DayOfWeek do
                           "Sa"
                         else
                               "Su"
-                            end
                         end
                     end
                 end
             end
         end
+      end
   end
 
   def day_appreviation2(day) def do
@@ -39,6 +39,7 @@ defmodule Sample.DayOfWeek do
     end
   end
 
+  # pattern matching
   def day_abbreviation3(:Monday), do:"M"
   def day_abbreviation3(:Monday), do:"T"
   def day_abbreviation3(:Monday), do:"W"
@@ -48,4 +49,15 @@ defmodule Sample.DayOfWeek do
   def day_abbreviation3(:Monday), do:"Su"
   def day_abbreviation3(), do:"Invalid Day"
 
+  def day_appreviation4(day) def do
+    case day do
+      :Monday -> "M"
+      :Tuesday -> "T"
+      :Wednesday -> "W"
+      :Thursday -> "R"
+      :Saturday -> "Sa"
+      :Sunday -> "Su"
+      _ -> "Invalid day"
+    end
+  end
 end
