@@ -68,7 +68,8 @@ defmodule Sample.DayOfWeek do
       {25, month, _} -> "Only #{12 - month} more months till Christmas"
       {31, 10, 1517} -> "The reformation is starting"
       {31, 10, _ } -> "Happy Halloween"
-      {_, _, _} -> "Just and average day"
+      {_, month, _} when month <=12 -> "Just and average day"
+      {_, _, _} -> "Invalid month"
     end
   end
 
