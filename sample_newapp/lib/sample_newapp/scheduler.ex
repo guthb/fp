@@ -1,6 +1,4 @@
 defmodule SampleNewApp.Scheduler do
   use QuantumScheduler,
-      otp_app
-
-  :pluralsite_tweet
+    otp_app: sample_newapp
 end
