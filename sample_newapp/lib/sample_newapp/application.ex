@@ -10,6 +10,7 @@ defmodule SampleNewapp.Application do
     children = [
       # Starts a worker by calling: SampleNewapp.Worker.start_link(arg)
       # {SampleNewapp.Worker, arg}
+      SampleNewApp.Scheduler
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
