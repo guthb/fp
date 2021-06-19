@@ -1,4 +1,4 @@
-efmodule KV.Registry do
+defmodule KV.Registry do
   use GenServer
 
   ## Client API
@@ -25,7 +25,7 @@ efmodule KV.Registry do
     GenServer.cast(server, {:create, name})
   end
 
-  ## Server calbacks
+  ## Server callbacks
   @impl true
   def init(:ok) do
     names = %{}
