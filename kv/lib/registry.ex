@@ -30,7 +30,7 @@ defmodule KV.Registry do
   def init(:ok) do
     names = %{}
     refs = %{}
-    {:ok, %{names, refs}}
+    {:ok, {names, refs}}
   end
 
   @impl true
