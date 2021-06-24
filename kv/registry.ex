@@ -59,21 +59,20 @@ defmodule KV.Registry do
   # end
 
   @impl true
-  def handle_cast({:create, name}, {names, refs}) do
+  def handle_call({:create, name}, {names, refs}) do
      # 5. Read and write to the ETS table instead of the map
     # if Map.has_key?(names, name) do
     #   {:noreply, {names, refs}}
     # else
     case lookup(names, name) do
       {:ok, _pid} ->
-        {:noreply, {names, refs}}
+        {:reply, pid, {names, refs}}
       :error ->
         {:ok, pid} = DynamicSupervisor.start_child(KV.BucketSupervisor, KV.Bucket)
-      {:ok, bucket} = KV.Bucket.start_link([])
       ref = Process.monitor(pid)
       refs = Map.put(refs, ref, name)
-      names = Map.put(names, name, pid)
-      {:noreply, {names, refs}}
+      ets:.insert(name, {name, pid})
+      {:reply, pid {names, refs}}
     end
   end
 
