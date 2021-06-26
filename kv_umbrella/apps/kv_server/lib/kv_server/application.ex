@@ -10,6 +10,9 @@ defmodule KVServer.Application do
     children = [
       # Starts a worker by calling: KVServer.Worker.start_link(arg)
       # {KVServer.Worker, arg}
+      port = String.to_integer(System.get_env("PORT") || "4040")
+
+      {Task, fn -> KVServer.accept(port) end}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
