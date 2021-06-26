@@ -16,6 +16,6 @@ defmodule KvUmbrella.MixProject do
   #
   # Run "mix help deps" for examples and options.
   defp deps do
-    []
+    [:kv, in_umbrella: true]
   end
 end
