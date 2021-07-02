@@ -14,4 +14,8 @@ defmodule KV.RouterTest do
       KV.Router.route(<<0>>, Kernel, :node, [])
     end
   end
+
+  @tag :distributed
+  test "route requests across nodes" do
+
 end
