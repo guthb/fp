@@ -7,11 +7,11 @@ defmodule KV.MixProject do
       version: "0.1.0",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
       build_path: "../../_build",
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
-      lockfile: "../../mix.lock",
+      lockfile: "../../mix.lock"
     ]
   end
 
@@ -23,7 +23,6 @@ defmodule KV.MixProject do
       mod: {KV, []}
     ]
   end
-
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
