@@ -3,6 +3,15 @@ defmodule KV.Router do
   Dispatch the given `mod`, `fun`, `args` request
   to the appropriate node based on the `bucket`.
   """
+
+  @doc """
+  The routing table.
+  """
+  def table do
+    # Replace computer-name with your local machine name
+    [{?a..?m, :"foo@computer-name"}, {?n..?z, :"bar@computer-name"}]
+  end
+
   def route(bucket, mod, fun, args) do
     # Get the first byte of the binary
     first = :binary.first(bucket)
@@ -25,14 +34,6 @@ defmodule KV.Router do
 
   defp no_entry_error(bucket) do
     raise "could not find entry for #{inspect(bucket)} in table #{inspect(table())}"
-  end
-
-  @doc """
-  The routing table.
-  """
-  def table do
-    # Replace computer-name with your local machine name
-    [{?a..?m, :"foo@computer-name"}, {?n..?z, :"bar@computer-name"}]
   end
 end
 
