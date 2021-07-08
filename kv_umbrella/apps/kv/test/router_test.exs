@@ -1,5 +1,6 @@
 defmodule KV.RouterTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
+  # , async: true
 
   test "route requests across nodes" do
     assert KV.Router.route("hello", Kernel, :node, []) ==

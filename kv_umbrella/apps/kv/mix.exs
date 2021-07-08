@@ -12,6 +12,12 @@ defmodule KV.MixProject do
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock"
+    ],
+    releases: [
+      foo: [
+        version: "0.0.1",
+        applications: [kv_server: :permanent, kv: :permanent]
+      ]
     ]
   end
 
