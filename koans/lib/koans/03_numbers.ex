@@ -66,11 +66,11 @@ defmodule Numbers do
   end
 
   koan "The meaning of life in hexadecimal is 2A!" do
-    assert Integer.parse("2A", 16) == {___, ""}
+    assert Integer.parse("2A", 16) == {42, ""}
   end
 
   koan "The remaining unparsable part is also returned" do
-    assert Integer.parse("5 years") == {5, ___}
+    assert Integer.parse("5 years") == {5, " years"}
   end
 
   koan "What if you parse a floating point value as an integer?" do
