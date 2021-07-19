@@ -4,15 +4,15 @@ defmodule Lists do
   @intro "Lists"
 
   koan "We can see what is ahead" do
-    assert List.first([1, 2, 3]) == ___
+    assert List.first([1, 2, 3]) == 1
   end
 
   koan "Checking what's trailing is also simple" do
-    assert List.last([1, 2, 3]) == ___
+    assert List.last([1, 2, 3]) == 3
   end
 
   koan "Lists can store anything you throw at them" do
-    assert [1, 2] ++ [:a, "b"] == ___
+    assert [1, 2] ++ [:a, "b"] == [1, 2, :a, "b"]
   end
 
   koan "Things can evolve" do
