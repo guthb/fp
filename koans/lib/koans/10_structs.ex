@@ -44,16 +44,28 @@ defmodule Structs do
 
   koan "Use the put_in macro to replace a nested value" do
     airline = %Airline{}
-    assert put_in(airline.plane.maker, :airbus) == ___
+
+    assert put_in(airline.plane.maker, :airbus) == %Structs.Airline{
+             name: "Southwest",
+             plane: %Structs.Plane{maker: :airbus, passengers: 0}
+           }
   end
 
   koan "Use the update_in macro to modify a nested value" do
     airline = %Airline{plane: %Plane{passengers: 200}}
-    assert update_in(airline.plane.passengers, fn x -> x + 2 end) == ___
+
+    assert update_in(airline.plane.passengers, fn x -> x + 2 end) == %Structs.Airline{
+             name: "Southwest",
+             plane: %Structs.Plane{maker: :boeing, passengers: 202}
+           }
   end
 
   koan "Use the put_in macro with atoms to replace a nested value in a non-struct" do
     airline = %{plane: %{maker: :boeing}, name: "Southwest"}
-    assert put_in(airline[:plane][:maker], :cessna) == ___
+
+    assert put_in(airline[:plane][:maker], :cessna) == %{
+             name: "Southwest",
+             plane: %{maker: :cessna}
+           }
   end
 end
