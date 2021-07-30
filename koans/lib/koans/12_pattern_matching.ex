@@ -11,20 +11,20 @@ defmodule PatternMatching do
     [head | tail] = [1, 2, 3, 4]
 
     assert head == 1
-    assert tail == 4
+    assert tail == [2, 3, 4]
   end
 
   koan "And then put them back together" do
     head = 1
     tail = [2, 3, 4]
 
-    assert ___ == [head | tail]
+    assert [1, 2, 3, 4] == [head | tail]
   end
 
   koan "Some values can be ignored" do
     [_first, _second, third, _fourth] = [1, 2, 3, 4]
 
-    assert third == ___
+    assert third == 3
   end
 
   koan "Strings come apart just as easily" do
