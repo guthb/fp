@@ -30,7 +30,7 @@ defmodule PatternMatching do
   koan "Strings come apart just as easily" do
     "Shopping list: " <> items = "Shopping list: eggs, milk"
 
-    assert items == ___
+    assert items == "eggs, milk"
   end
 
   koan "Maps support partial pattern matching" do
