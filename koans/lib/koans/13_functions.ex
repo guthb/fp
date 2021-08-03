@@ -38,24 +38,24 @@ defmodule Functions do
   def sum_up(_thing), do: :single_thing
 
   koan "Functions can have guard expressions" do
-    assert sum_up([1, 2, 3]) == ___
-    assert sum_up(1) == ___
+    assert sum_up([1, 2, 3]) == :entire_list
+    assert sum_up(1) == :single_thing
   end
 
   def bigger(a, b) when a > b, do: "#{a} is bigger than #{b}"
   def bigger(a, b) when a <= b, do: "#{a} is not bigger than #{b}"
 
   koan "Intricate guards are possible, but be mindful of the reader" do
-    assert bigger(10, 5) == ___
-    assert bigger(4, 27) == ___
+    assert bigger(10, 5) == "10 is bigger than 5"
+    assert bigger(4, 27) == "4 is not bigger than 27"
   end
 
   def get_number(0), do: "The number was zero"
   def get_number(number), do: "The number was #{number}"
 
   koan "For simpler cases, pattern matching is effective" do
-    assert get_number(0) == ___
-    assert get_number(5) == ___
+    assert get_number(0) == "The number was zero"
+    assert get_number(5) == "The number was 5"
   end
 
   koan "Little anonymous functions are common, and called with a dot" do
