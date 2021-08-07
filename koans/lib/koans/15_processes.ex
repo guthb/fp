@@ -157,19 +157,19 @@ defmodule Processes do
 
     Process.exit(pid, :random_reason)
 
-    assert_receive ___
+    assert_receive reason
   end
 
   koan "Parent processes can trap exits for children they are linked to" do
     Process.flag(:trap_exit, true)
     spawn_link(fn -> Process.exit(self(), :normal) end)
 
-    assert_receive {:EXIT, _pid, ___}
+    assert_receive {:EXIT, _pid, spawn_link}
   end
 
   koan "If you monitor your children, you'll be automatically informed of their departure" do
     spawn_monitor(fn -> Process.exit(self(), :normal) end)
 
-    assert_receive {:DOWN, _ref, :process, _pid, ___}
+    assert_receive {:DOWN, _ref, :process, _pid, spawn_monitor}
   end
 end
