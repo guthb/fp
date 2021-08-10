@@ -95,18 +95,18 @@ defmodule GenServers do
 
   koan "Servers that are created and initialized successfully returns a tuple that holds the PID of the server" do
     {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
-    assert is_pid(pid) == ___
+    assert is_pid(pid) == true
   end
 
   koan "The handle_call callback is synchronous so it will block until a reply is received" do
     {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
-    assert GenServer.call(pid, :get_password) == ___
+    assert GenServer.call(pid, :get_password) == "3kr3t!"
   end
 
   koan "A server can support multiple actions by implementing multiple handle_call functions" do
     {:ok, pid} = GenServer.start_link(Laptop, "3kr3t!")
-    assert GenServer.call(pid, :get_manufacturer) == ___
-    assert GenServer.call(pid, :get_type) == ___
+    assert GenServer.call(pid, :get_manufacturer) == "Apple Inc."
+    assert GenServer.call(pid, :get_type) == "MacBook Pro"
   end
 
   koan "A handler can return multiple values and of different types" do
