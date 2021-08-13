@@ -15,4 +15,15 @@ defmodule Streamers do
   def hello do
     :world
   end
+
+  def find_index(directory) do
+    files = Path.join(directory, "*.m3u8")
+
+    Enum.find(Path.wildcard(files), fn file ->
+      is_index?(file)
+    end)
+  end
+
+  def is_index?(file) do
+  end
 end
