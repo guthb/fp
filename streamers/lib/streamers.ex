@@ -12,20 +12,23 @@ defmodule Streamers do
       :world
 
   """
-  def hello do
-    :world
-  end
+
+  # def hello do
+  #   :world
+  # end
 
   def find_index(directory) do
     files = Path.join(directory, "*.m3u8")
-
-    Enum.find(Path.wildcard(files), is_index?(&1)
+    Enum.find(Path.wildcard(files), is_index?(&1))
   end
 
   defp is_index?(file) do
-    File.open! file, fn
-      "#somethinginfile\n#anotherthinginfile" <> _ -> true
-      _ -> false
+    File.open!(file, fn
+      "#somethinginfile\n#anotherthinginfile" <> _ ->
+        true
+
+      contents ->
+        false
     end)
   end
 end
