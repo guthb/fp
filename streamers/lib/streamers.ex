@@ -25,5 +25,15 @@ defmodule Streamers do
   end
 
   def is_index?(file) do
+    File.open(file, fn
+      "#somethinginfile\n#anotherthinginfile" <> _ ->
+        true
+
+      _ ->
+        false
+
+      contents ->
+        nil
+    end)
   end
 end
