@@ -8,8 +8,9 @@ defmodule Streamers do
 
   ## Examples
 
-      iex> Streamers.hello()
-      :world
+      iex> Streamers.find_index("this/doesnt/exist")
+      nil
+
 
   """
 
@@ -17,20 +18,18 @@ defmodule Streamers do
   #   :world
   # end
 
+  # code Comment
   def find_index(directory) do
     files = Path.join(directory, "*.m3u8")
-    Enum.find(Path.wildcard(files), is_index?(&1))
+
+    if file = Enum.find(Path.wildcard(files), is_index?(&1)) do
+      Path.basename(file)
+    end
   end
 
   defp is_index?(file) do
-    File.open!(file, fn
-      "#somethinginfile\n#anotherthinginfile" <> _ ->
-        true
-
-      contents ->
-        # <--PID
-        IO.puts(contents)
-        false
+    File.open!(file, fn pid ->
+      IO.read(pid, 25) == "#somethinginfile\n#anotherthinginfile"
     end)
   end
 end
