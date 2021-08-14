@@ -4,7 +4,7 @@ defmodule Streamers do
   """
 
   @doc """
-  Hello world.
+  Find Streaimg index file in the given directory
 
   ## Examples
 
@@ -28,6 +28,8 @@ defmodule Streamers do
         true
 
       contents ->
+        # <--PID
+        IO.puts(contents)
         false
     end)
   end
