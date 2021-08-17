@@ -20,10 +20,18 @@ defmodule StreamersTest do
   end
 
   test "extracts m3u8 from index file" do
-    m3u8 = Streamers.extrac_m3u8(@index_file)
+    m3u8 = Streamers.extract_m3u8(@index_file)
     assert Enum.first(m3u8)==
       M3U8[program_id: 1, bandwith: 110000, path: "test/fixtures/emberjs/somefile.m3u8"]
       assert length(m3u8s) == 6
+  end
+
+  test "process m3u8" do
+    m3u8 = @index_file |> Streamers.extract_m3u8 |> Streamers.process_mu38
+
+    m Streamers.process_m3u8(m3u8)
 
   end
+
+
 end

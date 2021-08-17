@@ -1,5 +1,5 @@
 defmodule Streamers do
-  defrecord M3U8, program_id: nil, file bandwith: nil
+  defrecord M3U8, program_id: nil, file bandwith: nil, ts_files: []
   @moduledoc """
   Documentation for `Streamers`.
   """
@@ -27,7 +27,9 @@ defmodule Streamers do
       file
     end
   end
-
+  @doc """
+  Extract M3U8 records from the index file
+  """
   def extract_m3u8(index_file) do
     File.open! file_index, fn(pid) ->
       #discards #EXTM3U
@@ -36,7 +38,7 @@ defmodule Streamers do
     end
   end
 
-  defp do_extrace_m3u8(pid, dir, acc)do
+  defp do_extract_m3u8(pid, dir, acc)do
     case IO.readline(pid) do
       :eof -> figure_this_out
       stream_inf ->
@@ -58,4 +60,20 @@ defmodule Streamers do
       IO.read(pid, 25) == "#somethinginfile\n#anotherthinginfile"
     end)
   end
+
+  @doc """
+  process M3U8 records to get ts files
+  """
+
+  def process_m3u8(m3u8) do
+    Enum.map m3u8s, do_process_m3u8(&1)
+  end
+
+  defp do_pocess_m3u8(M3U8[path: path]) do
+    File.open! path, fn(pid)
+    #discards #EXTM3U
+      IO.readline(pid)
+      IO.readline(pid)
+      do_process_m3u8(pid, [])
+
 end
