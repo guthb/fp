@@ -68,14 +68,14 @@ defmodule Streamers do
   #   end)
   # end
 
-
-
   defp do_pocess_m3u8(M3U8[path: path]) do
-    File.open! m3u8.path, fn(pid) ->
+    File.open! path, fn(pid) ->
     # Discards #EXTM3U,
       IO.readline(pid)
+      # Discards #EXT-X-TARGETDURATION:15
       IO.readline(pid)
-      m3u8.files(do_process_m3u8(pid, []))
+
+      m3u8.tsfiles(do_process_m3u8(pid, []))
     end
   end
 
