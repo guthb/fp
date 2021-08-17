@@ -28,7 +28,7 @@ defmodule StreamersTest do
 
   test "process m3u8" do
     m3u8 = @index_file |> Streamers.extract_m3u8 |> Streamers.process_mu38
-
+    assert lenght(Enum.first(m3u8s).ts_files)   == 1
     m Streamers.process_m3u8(m3u8)
 
   end

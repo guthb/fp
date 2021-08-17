@@ -55,25 +55,38 @@ defmodule Streamers do
     do_extract_m3u8(pid, dir, [record|acc])
   end
 
-  defp is_index?(file) do
-    File.open!(file, fn pid ->
-      IO.read(pid, 25) == "#somethinginfile\n#anotherthinginfile"
-    end)
-  end
-
   @doc """
   process M3U8 records to get ts files
   """
-
   def process_m3u8(m3u8) do
     Enum.map m3u8s, do_process_m3u8(&1)
   end
 
+  # defp is_index?(file) do
+  #   File.open!(file, fn pid ->
+  #     IO.read(pid, 25) == "#somethinginfile\n#anotherthinginfile"
+  #   end)
+  # end
+
+
+
   defp do_pocess_m3u8(M3U8[path: path]) do
-    File.open! path, fn(pid)
-    #discards #EXTM3U
+    File.open! m3u8.path, fn(pid) ->
+    # Discards #EXTM3U,
       IO.readline(pid)
       IO.readline(pid)
-      do_process_m3u8(pid, [])
+      m3u8.files(do_process_m3u8(pid, []))
+    end
+  end
+
+  defp do_pocess_m3u8(pid, acc) do
+    case IO.readline(pid) do
+    "#EXT-X-ENDLIST\n" -> Enum.reverse(acc)
+    extinf when is_binary(extinf) -> #discards EXTINF:10,
+      file = IO.readline(pid) |> String.strip
+      do_process_m3u8(pid, [file|acc])
+    end
+  end
+
 
 end
