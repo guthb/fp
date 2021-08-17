@@ -49,7 +49,7 @@ defmodule Streamers do
     << "stuff", program_id, ",BANDWIDTH=", bandwidth :: binary >> == steam_inf
     # program_id = binary_to_integer(<<program_id>>)
     path = Path.join(dir, String.strip(path))
-    record = M3U8[program_id: program_id -?0, path: String.strip( path), bandwidth: String.strip(bandwidth])
+    record = M3U8[program_id: program_id -?0, path: String.strip( path), bandwidth: binary_to_integer(String.strip(bandwidth))]
     do_extract_m3u8(pid, dir, [record|acc])
   end
 
