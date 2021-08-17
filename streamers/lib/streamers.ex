@@ -45,6 +45,12 @@ defmodule Streamers do
     end
   end
 
+  defp  do_extract_m3u8(pid, stream_inf, path, acc)do
+
+
+    record = M3U8[program_id: program_id, path: path, bandwidth: bandwidth]
+  end
+
   defp is_index?(file) do
     File.open!(file, fn pid ->
       IO.read(pid, 25) == "#somethinginfile\n#anotherthinginfile"
