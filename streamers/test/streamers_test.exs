@@ -23,7 +23,7 @@ defmodule StreamersTest do
     m3u8 = Streamers.extrac_m3u8(@index_file)
     assert Enum.first(m3u8)==
       M3U8[program_id: 1, bandwith: 110000, path: "test/fixtures/emberjs/somefile.m3u8"]
-
+      assert length(m3u8s) == 6
 
   end
 end
