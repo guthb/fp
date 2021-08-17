@@ -46,9 +46,10 @@ defmodule Streamers do
   end
 
   defp  do_extract_m3u8(pid, stream_inf, path, acc)do
-
-
-    record = M3U8[program_id: program_id, path: path, bandwidth: bandwidth]
+    << "stuff", program_id, ",BANDWIDTH=", bandwidth :: binary >> == steam_inf
+    program_id = binary_to_integer(<<program_id>>)
+    record = M3U8[program_id: program_id -?0, path: String.strip( path), bandwidth: String.strip(bandwidth])
+    do_extract_m3u8(pid, [record|acc])
   end
 
   defp is_index?(file) do
