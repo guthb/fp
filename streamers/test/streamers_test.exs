@@ -5,6 +5,7 @@ defmodule StreamersTest do
   alias Streamers.M3U8, as M3U8
 
   @index_file "test/fixtures/emberjs/somefile.m3u8"
+  @m3u8_sample "test/fixtures/emberjs/somefilecopy.m3u8"
 
   test "greets the world" do
     assert Streamers.hello() == :world
@@ -22,15 +23,14 @@ defmodule StreamersTest do
   test "extracts m3u8 from index file" do
     m3u8 = Streamers.extract_m3u8(@index_file)
     assert Enum.first(m3u8)==
-      M3U8[program_id: 1, bandwith: 110000, path: "test/fixtures/emberjs/somefile.m3u8"]
+      M3U8[program_id: 1, bandwith: 110000, path: @m3u8_sample]
       assert length(m3u8s) == 6
   end
 
   test "process m3u8" do
     m3u8 = @index_file |> Streamers.extract_m3u8 |> Streamers.process_mu38
-    assert lenght(Enum.first(m3u8s).ts_files)   == 1
-    m Streamers.process_m3u8(m3u8)
-
+    sample = Enum.find(m3u8, fun(m3u8) -> m3u8.path == @m3u8_sample end)
+    assert length(sample.ts_files)   == 2
   end
 
 

@@ -69,6 +69,8 @@ defmodule Streamers do
     receive do
       { :m3u8, updated_m3u8 } ->
         do_collect_m3u8(count -1, [updated_m3u8|acc])
+      # after
+      #   10 ->
     end
   end
 
