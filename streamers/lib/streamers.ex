@@ -59,7 +59,22 @@ defmodule Streamers do
   process M3U8 records to get ts files
   """
   def process_m3u8(m3u8) do
-    Enum.map m3u8s, do_process_m3u8(&1)
+    Enum.map m3u8s, do_parallel_process_m3u8(&1, self)
+    do_collect_m3u8(length(m3u8s))
+  end
+
+  defp do-collect_m3u8(count) do
+    receive do
+      { :m3u8, updated_m3u8 } ->
+        do_collect_m3u8(count -1, [updated_m3u8|acc])
+    end
+  end
+
+  defp do_parallel_process_m3u8(m3u8, parent_pid) do
+    spawn (fn ->
+      updated_m3u8 = do_process_m3u8(m3u8)
+      #parent_pid <- { :m3u8, updated_m3u8}
+    end)
   end
 
   # defp is_index?(file) do
