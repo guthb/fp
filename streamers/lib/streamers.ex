@@ -63,7 +63,9 @@ defmodule Streamers do
     do_collect_m3u8(length(m3u8s))
   end
 
-  defp do-collect_m3u8(count) do
+  defp do_collect_m3u8(0, acc), do: acc
+
+  defp do-collect_m3u8(count, acc) do
     receive do
       { :m3u8, updated_m3u8 } ->
         do_collect_m3u8(count -1, [updated_m3u8|acc])
