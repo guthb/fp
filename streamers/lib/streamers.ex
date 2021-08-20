@@ -77,7 +77,7 @@ defmodule Streamers do
   defp do_parallel_process_m3u8(m3u8, parent_pid) do
     spawn (fn ->
       updated_m3u8 = do_process_m3u8(m3u8)
-      #parent_pid <- { :m3u8, updated_m3u8}
+      parent_pid <- { :m3u8, updated_m3u8}
     end)
   end
 
