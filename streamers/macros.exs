@@ -7,6 +7,6 @@ defmodule MyMacros do
 end
 
 
-my_unless 1 + 2 + != 3 do
-  IO.puts "it is false"
-end
+# my_unless 1 + 2 + != 3 do
+#   IO.puts "it is false"
+# end
