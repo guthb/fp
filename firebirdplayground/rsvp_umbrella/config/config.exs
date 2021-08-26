@@ -40,10 +40,10 @@ config :phoenix, :json_library, Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-config :rsvp Resvp.Repo,
+config :rsvp, Rsvp.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "rsvp",
-  username: "",
-  password: "",
+  username: "postgres",
+  password: "postgres",
 
   config :rsvp, ecto_repos: (Rsvp.Repo)
