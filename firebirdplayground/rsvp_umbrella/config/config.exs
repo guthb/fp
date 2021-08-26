@@ -39,3 +39,11 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :rsvp Resvp.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "rsvp",
+  username: "",
+  password: "",
+
+  config :rsvp, ecto_repos: (Rsvp.Repo)
