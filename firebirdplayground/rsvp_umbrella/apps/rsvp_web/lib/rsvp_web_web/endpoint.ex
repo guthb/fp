@@ -7,7 +7,7 @@ defmodule RsvpWebWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_rsvp_web_key",
-    signing_salt: "Y2uPcyoC"
+    signing_salt: "QUDLp7dR"
   ]
 
   socket "/socket", RsvpWebWeb.UserSocket,

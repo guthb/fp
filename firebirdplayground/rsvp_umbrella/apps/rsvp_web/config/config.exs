@@ -10,10 +10,10 @@ use Mix.Config
 # Configures the endpoint
 config :rsvp_web, RsvpWebWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "nedP5vGB++qxDYsR9+44IPDkAJBALoJ5KKcXCTTMuyuUZh1RiUkbhGPouqtnTDRO",
+  secret_key_base: "4EXhJKbs4dIkrRcT5YWy03lRL8Splu/SUlzg6YOiAtqDX1SWrIVjW6oa+W62AWeA",
   render_errors: [view: RsvpWebWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: RsvpWeb.PubSub,
-  live_view: [signing_salt: "sjF/Njih"]
+  live_view: [signing_salt: "51l+Ntpt"]
 
 # Configures Elixir's Logger
 config :logger, :console,
