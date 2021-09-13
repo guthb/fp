@@ -1,7 +1,8 @@
 defmodule NewphxWeb.PageController do
   use NewphxWeb, :controller
 
-  def index(conn, _params) do
-    render(conn, "index.html")
+  def index(conn, params) do
+    NewphxWeb.EventQueries.get_by_id(params["id"])
+    render conn, "details.html", event: "Events #{parma["id"]}""
   end
 end
