@@ -6,5 +6,9 @@ defmodule NewphxWeb.EventController do
     render conn, "details.html", event: "Events #{parms["id"]}"
   end
 
+  def list(conn, _parms) do
+    event = NewphxWeb.EventsQueries.get_all
+    render conn, "list.html", events: events
+  end
 
 end

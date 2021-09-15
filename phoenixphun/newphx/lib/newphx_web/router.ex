@@ -16,8 +16,9 @@ defmodule NewphxWeb.Router do
   scope "/", NewphxWeb do
     pipe_through(:browser)
 
-    get("/", PageController, :index)
-    get("/events/:id", EventController, :show)
+    get "/", PageController, :index
+    get "/events", EventController, :list
+    get "/events/:id", EventController, :show
   end
 
   # Other scopes may use custom stacks.
