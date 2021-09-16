@@ -1,7 +1,8 @@
 <h1>All Events</h1>
+<%= render Newphx.SharedView, "count.html", list: @events %>
 <div class="list-group">
-<%= for e <- @events do %>
-    <%# <a href="events/<%= e.id %>">
+    <%= for e <- @events do %>
+    <%# <a href="events/<%= e.id %>
         <%# <div> %>
             <%# <h4 class="list-group-item-heading"><%= e.title %></h4>
 
@@ -13,6 +14,6 @@
             <%# </span> %>
         <%# </div> %>
     <%# </a> %>
-    <%= render "summar.html", event: e %>
+    <%= render "summary.html", event: e %>
 <% end %>
 </div>
