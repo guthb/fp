@@ -14,6 +14,6 @@
             <%# </span> %>
         <%# </div> %>
     <%# </a> %>
-    <%= render "summary.html", event: e %>
+    <%= render "summary.html", event: e, conn: @conn %>
 <% end %>
 </div>
