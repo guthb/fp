@@ -11,4 +11,8 @@ defmodule NewphxWeb.EventController do
     render conn, "list.html", events: events
   end
 
+  def create(conn, _params) do
+    render conn, "create.html"
+  end
+
 end
