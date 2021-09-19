@@ -12,7 +12,12 @@ defmodule NewphxWeb.EventController do
   end
 
   def create(conn, _params) do
-    render conn, "create.html"
+    changeset = NewphxWeb.Events.changesets(%NewphxWeb.Events{}, %{})
+    render conn, "create.html", cahngesset: changeset
+  end
+
+  def add(conn, _params) do
+
   end
 
 end

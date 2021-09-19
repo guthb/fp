@@ -19,6 +19,7 @@ defmodule NewphxWeb.Router do
     get "/", PageController, :index
     get "/events", EventController, :list
     get "/events/:new", EventController, :create
+    post "/events/new", EventsController, :add
     get "/events/:id", EventsController, :show
   end
 
