@@ -19,9 +19,9 @@ defmodule NewphxWeb.EventController do
   def add(conn, %{"events"}=> events_params) do
     events = Map.update!(events, "date", fn d -> d <> ":00" end)
 
-    NewphxWeb.Events.changeset(%NewphxWeb.Events{}, events)
+    %{id: id} = NewphxWeb.Events.changeset(%NewphxWeb.Events{}, events)
     |> NewphxWeb.EventQueries.create
-    redirect conn, to: event_path(conn, :list)
+    redirect conn, to: event_path(conn, :show, id)
   end
 
 end
