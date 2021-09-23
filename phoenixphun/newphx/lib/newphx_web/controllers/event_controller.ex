@@ -11,9 +11,13 @@ defmodule NewphxWeb.EventController do
     render conn, "list.html", events: events
   end
 
-  def create(conn, %{errors: errors}) do
+  def create(conn, _params) do
     render conn, "create.html", changeset: errors
   end
+
+  def create(conn, %{errors: errors}) do
+    render conn, "create.html", changeset: errors
+  endS
 
   def create(conn, _params) do
     changeset = NewphxWeb.Events.changesets(%NewphxWeb.Events{}, %{})
@@ -21,7 +25,7 @@ defmodule NewphxWeb.EventController do
   end
 
   def add(conn, %{"events"}=> events_params) do
-    events = Map.update!(events, "date", fn d -> d <> ":00" end)
+    events = Map.update!(events, "date", fn x -> x <> ":00" end)
 
     changeset = NewphxWeb.Events.changeset(%NewphxWeb.Events{}, events)
 
