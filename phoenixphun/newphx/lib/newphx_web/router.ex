@@ -21,6 +21,9 @@ defmodule NewphxWeb.Router do
     get "/events/:new", EventController, :create
     post "/events/new", EventsController, :add
     get "/events/:id", EventsController, :show
+
+    get "/login", LoginController, :index
+    post "/login", LoginController, :login
   end
 
   # Other scopes may use custom stacks.

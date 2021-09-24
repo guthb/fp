@@ -1,5 +1,5 @@
 defmodule NewphxWeb.PageController do
-  use NewphxWeb, :controller
+  use NewphxWeb.Web, :controller
 
   def index(conn, %{"id" -> id }) do
     event = NewphxWeb.EventQueries.get_by_id(id)

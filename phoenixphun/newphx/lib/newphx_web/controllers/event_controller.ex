@@ -11,13 +11,9 @@ defmodule NewphxWeb.EventController do
     render conn, "list.html", events: events
   end
 
-  def create(conn, _params) do
-    render conn, "create.html", changeset: errors
-  end
-
   def create(conn, %{errors: errors}) do
     render conn, "create.html", changeset: errors
-  endS
+  end
 
   def create(conn, _params) do
     changeset = NewphxWeb.Events.changesets(%NewphxWeb.Events{}, %{})
