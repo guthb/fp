@@ -4,13 +4,22 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>Newphx · Phoenix Framework</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
+
   <body>
-    <header>
+
+      <ul class="nav nav-pills col-xs-offset-7">
+        <li><a href="/">Home</a></li>
+        <li><a href="<%= event_path(@conn, :list) %>">Events</a></li>
+        <li><a href="<%= login_path(@conn, :list) %>">Events</a></li>
+       </ul>
+
       <section class="container">
+      <header>
         <nav role="navigation">
           <ul>
             <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
@@ -22,8 +31,12 @@
         <a href="https://phoenixframework.org/" class="phx-logo">
           <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
         </a>
-      </section>
-    </header>
+        <%= if @conn.cookies["user_name"] do %>
+          <span>
+          Hello, <%= @conn.cookies["user_name"] %>
+          </span>
+        </section>
+      </header>
     <main role="main" class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
