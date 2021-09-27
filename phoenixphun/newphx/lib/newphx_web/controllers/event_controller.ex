@@ -1,7 +1,7 @@
 defmodule NewphxWeb.EventController do
   use NewphxWeb.Web, :controller
 
-  plug NewphxWeb.AuthorizedPlug when action in [:create]
+  plug NewphxWeb.AuthorizedPlug, "create" when action in [:create]
 
   def show(conn, _parms) do
     # text conn, "Events #{parms["id"]}"

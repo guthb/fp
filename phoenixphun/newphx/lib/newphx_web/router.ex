@@ -26,13 +26,13 @@ defmodule NewphxWeb.Router do
   end
 
 
-  scope "/events", NewphxWeb do
-    pipe_through :authorized
-    get "/", EventController, :list
-    get "//new", EventController, :create
-    post "/new", EventsController, :add
-    get "/id", EventsController, :show
-  end
+  # scope "/events", NewphxWeb do
+  #   pipe_through :authorized
+  #   get "/", EventController, :list
+  #   get "//new", EventController, :create
+  #   post "/new", EventsController, :add
+  #   get "/id", EventsController, :show
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", NewphxWeb do
