@@ -16,4 +16,8 @@ defmodule NewphxWeb.AuthorizedPlug do
     |> halt
   end
 
+  defp authorize_user(conn, _) do
+    conn
+  end
+
 end

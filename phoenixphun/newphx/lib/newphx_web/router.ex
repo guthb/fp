@@ -9,21 +9,29 @@ defmodule NewphxWeb.Router do
     plug(:put_secure_browser_headers)
   end
 
+  pipeline  :authorized do
+    plug :browser
+    plug NewphxWeb.AuthorizedPlug
+  end
+
   pipeline :api do
     plug(:accepts, ["json"])
   end
 
   scope "/", NewphxWeb do
     pipe_through(:browser)
-
     get "/", PageController, :index
-    get "/events", EventController, :list
-    get "/events/:new", EventController, :create
-    post "/events/new", EventsController, :add
-    get "/events/:id", EventsController, :show
-
     get "/login", LoginController, :index
     post "/login", LoginController, :login
+  end
+
+
+  scope "/events", NewphxWeb do
+    pipe_through :authorized
+    get "/", EventController, :list
+    get "//new", EventController, :create
+    post "/new", EventsController, :add
+    get "/id", EventsController, :show
   end
 
   # Other scopes may use custom stacks.
