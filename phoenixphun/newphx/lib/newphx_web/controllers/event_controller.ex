@@ -32,4 +32,9 @@ defmodule NewphxWeb.EventController do
       {:error, reasons} -> create conn, %{errors: reasons}
   end
 
+  def reserve(conn, %{"id", => id, "reservation" => %{"quantity" => quantity}}) do
+    NewphxWeb.EventQueries.decrease_quantity(id, quantity)
+    redirect conn, to: event_path(conn, :show, id)
+  end
+
 end
