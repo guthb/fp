@@ -1,3 +1,16 @@
 <h1><%= @event.title %> <small><%= @event.location %><small></h1>
+<h3><%= format_date @event.date  %> at <%= format_time @event.date  %></h3>
+<p><%= @event.decsription %></p>
+<h4>Available Spots: <span class="quantity"><%= @event.quantity_availble %></span></h4>
 
 <h3> <%= format_date @event.date %> </h3>
+
+<%= form_for @conn, event_path(@conn, :reserve, @event.id), [as: :reservation,
+class: "form-inline"], fn f -> fn %>
+    <div class="form-group">
+        <% lable f, :quantity, class: "form-control", min: 1 %>
+    </div>
+
+    <%= sumbit "Reserve", class: "btn btn-primary pull-right"  %>
+
+<% end %>
