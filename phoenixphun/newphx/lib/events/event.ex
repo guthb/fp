@@ -7,6 +7,8 @@ defmodule Newphx.Events do
     field(:title, :string)
     field(:location, :string)
     field(:date, Ecto.DateTime)
+    field(:description, :string)
+    field(:quantity_available, :integer, defualt: 25)
 
     timestamps
   end
