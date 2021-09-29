@@ -20,9 +20,16 @@ defmodule NewphxWeb.Router do
 
   scope "/", NewphxWeb do
     pipe_through(:browser)
+
     get "/", PageController, :index
     get "/login", LoginController, :index
     post "/login", LoginController, :login
+
+    get "/", EventController, :list
+    get "//new", EventController, :create
+    post "/new", EventsController, :add
+    get "/id", EventsController, :show
+    post "/events/:id/reserve", EventsController, :reserve
   end
 
 
