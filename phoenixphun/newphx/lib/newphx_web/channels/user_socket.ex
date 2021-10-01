@@ -3,6 +3,7 @@ defmodule NewphxWeb.UserSocket do
 
   ## Channels
   # channel "room:*", NewphxWeb.RoomChannel
+  channel "event:*", NewphxWeb.EventChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
