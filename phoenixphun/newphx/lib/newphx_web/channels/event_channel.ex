@@ -9,4 +9,13 @@ defmodule NewphxWeb.EventChannel do
     {:ok, socket}
   end
 
+  def send_update(event) do
+    payload = %{
+        "quantity" => event.quantity_available
+    }
+
+    NewphxWeb.Endpoint.broadcast("event:#{event.id}", "update_quantity", payload)
+  end
+
+
 end
